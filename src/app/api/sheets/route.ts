@@ -13,7 +13,7 @@ export async function GET() {
 
         const text = await response.text();
         const rows = text.split("\n").map((row) => row.split(","));
-        const [_headers, ...dataRows] = rows;
+        const [...dataRows] = rows.slice(1);
 
         const formattedData = dataRows.map((row) => ({
             name: row[0] || "",
